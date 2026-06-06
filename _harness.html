@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="colors_and_type.css" />
+<link rel="stylesheet" href="deck.css" />
+<link rel="stylesheet" href="deck-slides.css" />
+<link rel="stylesheet" href="deck-frontier.css" />
+<style>
+  html, body { margin: 0; background: #000; height: 100%; }
+  body { display: flex; align-items: center; justify-content: center; }
+  .harness { width: 1920px; height: 1080px; position: relative; overflow: hidden; flex: none; transform: scale(0.46); transform-origin: center; background:#fff; }
+  .harness .f-hqi__head, .harness .f-hqi__win { animation: none !important; opacity: 1 !important; transform: none !important; }
+</style>
+</head>
+<body>
+<div class="harness">
+  <section data-deck-active>
+    <div class="f-hqi">
+      <div class="f-hqi__head">
+        <div class="f-hqi__headL">
+          <p class="kicker"><span class="dot"></span><span>The intelligence layer</span></p>
+          <h2 class="f-hqi__h">HQI: the shelf, wired straight to <em>HQ</em>.</h2>
+        </div>
+        <p class="f-hqi__intro">Not a dashboard. Not BI. <strong>HQI</strong> is the intelligence layer that pulls every shelf in every store into one live operating picture — and pushes actions back down.</p>
+      </div>
+      <div class="f-hqi__win">
+        <div class="f-hqi__bar">
+          <span class="f-hqi__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="f-hqi__url">hq.wisy.ai <span class="sl">/</span> <b>execution</b> <span class="sl">/</span> <b>live</b></span>
+        </div>
+        <div class="f-hqi__app">
+          <aside class="f-hqi__side">
+            <p class="f-hqi__logo">wisy<span>:</span></p>
+            <nav class="f-hqi__nav">
+              <span class="f-hqi__navit on"><span class="bx"></span>Live execution</span>
+              <span class="f-hqi__navit"><span class="bx"></span>Share of shelf</span>
+              <span class="f-hqi__navit"><span class="bx"></span>Out of stock</span>
+              <span class="f-hqi__navit"><span class="bx"></span>Planogram</span>
+              <span class="f-hqi__navit"><span class="bx"></span>Promotions</span>
+              <span class="f-hqi__navit"><span class="bx"></span>Field team</span>
+              <span class="f-hqi__navit"><span class="bx"></span>Routes</span>
+              <span class="f-hqi__navit"><span class="bx"></span>Reports</span>
+            </nav>
+          </aside>
+          <div class="f-hqi__main">
+            <div class="f-hqi__apphead">
+              <p class="f-hqi__title">Live execution <span>· Coca-Cola network · 4,212 stores</span></p>
+              <span class="f-hqi__livepill"><span class="d"></span>Live · 2s lag</span>
+            </div>
+            <div class="f-hqi__kpis">
+              <div class="f-hqi__kpi"><p class="k">On-shelf availability</p><p class="v">94.1<span>%</span></p><p class="dl up">▲ 2.4 vs. last week</p></div>
+              <div class="f-hqi__kpi"><p class="k">Red space share</p><p class="v">38.6<span>%</span></p><p class="dl up">▲ 1.1</p></div>
+              <div class="f-hqi__kpi"><p class="k">Promo compliance</p><p class="v">81<span>%</span></p><p class="dl down">▼ 3.2 — Region 04</p></div>
+              <div class="f-hqi__kpi"><p class="k">Revenue at risk</p><p class="v">$184<span>K</span></p><p class="dl up">recoverable this week</p></div>
+            </div>
+            <div class="f-hqi__panels">
+              <div class="f-hqi__heat">
+                <div class="f-hqi__panelhead"><p>Compliance heatmap <span>— Red = critical, Yellow = at risk, Green = compliant</span></p><span class="pill">Last 24h</span></div>
+                <div class="f-hqi__grid" id="hqiHeat"></div>
+              </div>
+              <div class="f-hqi__alerts">
+                <div class="f-hqi__panelhead"><p>Ranked alerts <span>— push to field</span></p><span class="pill">12 open</span></div>
+                <div class="f-hqi__alert red"><div class="ax"><p class="t">OOS cluster — Coca-Cola Original 2L, 38 stores São Paulo</p><p class="s">Region 02 · opened 4m ago</p></div><span class="val">+$42K</span></div>
+                <div class="f-hqi__alert amber"><div class="ax"><p class="t">Summer display missing — Coca-Cola + Sprite end-cap</p><p class="s">Region 04 · 21 stores</p></div><span class="val">+$28K</span></div>
+                <div class="f-hqi__alert green"><div class="ax"><p class="t">Competitor in the cold vault — shelf 3, Carrefour SP</p><p class="s">14 stores · planogram drift</p></div><span class="val">+$19K</span></div>
+                <div class="f-hqi__alert"><div class="ax"><p class="t">Price mismatch vs. PoS — Coca-Cola Zero 6-pack</p><p class="s">Chile · 9 stores</p></div><span class="val">+$12K</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+  (function hqiHeat(){
+    var el = document.getElementById('hqiHeat');
+    if (!el || el.childElementCount) return;
+    var COLS = 16, ROWS = 11, N = COLS * ROWS;
+    var s = 20260605;
+    function rnd(){ s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; }
+    var blobs = [[7,5],[8,6],[6,7],[8,4],[13,1],[8,0],[14,8]];
+    function redNear(c, r){
+      for (var b = 0; b < blobs.length; b++){
+        var dc = c - blobs[b][0], dr = r - blobs[b][1];
+        if (dc*dc + dr*dr <= 2 && rnd() < 0.72) return true;
+      }
+      return false;
+    }
+    var html = '';
+    for (var i = 0; i < N; i++){
+      var c = i % COLS, r = (i / COLS) | 0, cls;
+      if (redNear(c, r)) cls = 'r';
+      else { var x = rnd(); cls = x < 0.30 ? 'y' : (x < 0.62 ? 'g' : 'p'); }
+      html += '<span class="hc ' + cls + '"></span>';
+    }
+    el.innerHTML = html;
+  })();
+</script>
+</body>
+</html>
