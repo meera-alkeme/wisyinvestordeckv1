@@ -1,0 +1,316 @@
+/* ============================================================
+   WISY PRE-A FUNDRAISING DECK — slide styles
+   Built on colors_and_type.css tokens. 1920×1080 canvas.
+   ============================================================ */
+
+:root {
+  --type-title:     108px;
+  --type-display:   132px;
+  --type-subtitle:  40px;
+  --type-h:         64px;
+  --type-body:      28px;
+  --type-body-l:    34px;
+  --type-small:     22px;
+  --type-mono:      20px;
+
+  --pad-top:    88px;
+  --pad-bottom: 84px;
+  --pad-x:      120px;
+}
+
+html, body { margin: 0; padding: 0; background: #000; font-family: var(--font-sans); color: var(--fg-1); }
+deck-stage:not(:defined) { visibility: hidden; }
+deck-stage { background: var(--wisy-white); }
+
+section {
+  box-sizing: border-box;
+  background: var(--wisy-white);
+  color: var(--fg-1);
+  overflow: hidden;
+  font-family: var(--font-sans);
+}
+
+/* ---------- Reusable atoms ---------- */
+.kicker {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+}
+.kicker .dot {
+  width: 11px; height: 11px; border-radius: 999px;
+  background: var(--wisy-indigo);
+  display: inline-block;
+  flex-shrink: 0;
+}
+.kicker.on-dark { color: var(--wisy-indigo-200); }
+.kicker.on-dark .dot { background: var(--wisy-lime); }
+
+.title {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--type-title);
+  line-height: 0.97;
+  letter-spacing: -0.028em;
+  color: var(--fg-1);
+  margin: 0;
+  text-wrap: balance;
+}
+.title em { font-style: normal; color: var(--wisy-indigo); }
+.ink-indigo { color: var(--wisy-indigo); }
+.ink-lime {
+  background: var(--wisy-lime);
+  padding: 0 16px 6px;
+  border-radius: 12px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 52px;
+  padding: 0 26px;
+  border-radius: 999px;
+  background: var(--wisy-indigo-100);
+  color: var(--wisy-indigo);
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.pill.lime { background: var(--wisy-lime); color: var(--wisy-black); }
+.pill.ink  { background: var(--wisy-black); color: var(--wisy-white); }
+.pill.outline { background: transparent; color: var(--wisy-black); border: 1.5px solid var(--wisy-black); }
+
+/* Page chrome — slide number + brand */
+.chrome {
+  position: absolute;
+  inset: auto 0 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--pad-x);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  pointer-events: none;
+  z-index: 6;
+}
+.chrome.on-dark { color: rgba(255,255,255,0.5); }
+.chrome .brand {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
+  color: var(--wisy-indigo);
+}
+.chrome.on-dark .brand { color: var(--wisy-white); }
+
+/* Generic slide padding */
+.pad {
+  height: 100%;
+  box-sizing: border-box;
+  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   SLIDE 1 — TITLE
+   ============================================================ */
+.s-title {
+  position: relative;
+  height: 100%;
+  background: var(--wisy-white);
+  display: grid;
+  grid-template-columns: 1fr 760px;
+}
+.s-title__left {
+  padding: 92px var(--pad-x) 76px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.s-title__wordmark {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 168px;
+  line-height: 0.85;
+  letter-spacing: -0.045em;
+  color: var(--wisy-indigo);
+  text-transform: lowercase;
+  margin: 22px 0 0;
+}
+.s-title__hook .t {
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 0.99;
+  letter-spacing: -0.028em;
+  color: var(--wisy-black);
+  margin: 0 0 26px;
+  text-wrap: balance;
+}
+.s-title__hook .t em { font-style: normal; color: var(--wisy-indigo); }
+.s-title__hook .sub {
+  font-size: 30px;
+  color: var(--fg-2);
+  line-height: 1.38;
+  margin: 0;
+  max-width: 820px;
+}
+.s-title__meta {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  color: var(--fg-1);
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.s-title__meta span { white-space: nowrap; }
+.s-title__meta .bar { width: 30px; height: 1px; background: var(--wisy-gray-500); }
+.s-title__meta .accent { color: var(--wisy-indigo); }
+
+.s-title__right {
+  position: relative;
+  background: var(--wisy-indigo);
+  overflow: hidden;
+}
+/* Tweak: cover treatment */
+body[data-cover="ink"] .s-title__right { background: var(--wisy-black); }
+body[data-cover="ink"] .s-title__right::after {
+  background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.95) 100%);
+}
+body[data-cover="ink"] .s-title__rtag { color: var(--wisy-gray-500); }
+/* Tweak: freeze motion (for export / screen-share) */
+body[data-motion="off"] deck-stage section *,
+body[data-motion="off"] deck-stage section *::before,
+body[data-motion="off"] deck-stage section *::after {
+  animation: none !important;
+}
+.s-title__right::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    url("https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=1600&q=80&auto=format&fit=crop") center/cover;
+  mix-blend-mode: luminosity;
+  opacity: 0.5;
+}
+.s-title__right::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(83,84,237,0.55) 0%, rgba(83,84,237,0.94) 100%);
+}
+.s-title__rightInner {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 76px 68px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--wisy-white);
+}
+.s-title__rtag {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--wisy-indigo-200);
+}
+.s-title__statBlock { display: flex; flex-direction: column; gap: 16px; }
+.s-title__stat {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 84px;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--wisy-lime);
+  margin: 0;
+}
+.s-title__statLbl {
+  font-size: 26px;
+  line-height: 1.35;
+  color: rgba(255,255,255,0.9);
+  max-width: 540px;
+  margin: 0;
+}
+.s-title__backed {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.s-title__backed .lbl {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+.s-title__backed .names {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--wisy-white);
+  letter-spacing: -0.01em;
+}
+
+/* ============================================================
+   GENERIC — Section header band (top of content slides)
+   ============================================================ */
+.head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 64px;
+  align-items: end;
+  flex-shrink: 0;
+}
+.head h2 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--type-h);
+  line-height: 0.99;
+  letter-spacing: -0.025em;
+  color: var(--wisy-black);
+  margin: 18px 0 0;
+  text-wrap: balance;
+  max-width: 1180px;
+}
+.head h2 em { font-style: normal; color: var(--wisy-indigo); }
+.head__note {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  text-align: right;
+  white-space: nowrap;
+}
+.lede {
+  font-size: var(--type-body);
+  line-height: 1.4;
+  color: var(--fg-2);
+  margin: 22px 0 0;
+  max-width: 1280px;
+  text-wrap: pretty;
+}
+.lede strong { color: var(--fg-1); font-weight: 600; }
+.lede em { font-style: normal; color: var(--wisy-indigo); font-weight: 600; }
